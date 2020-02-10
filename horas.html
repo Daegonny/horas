@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='ptbr'>
+  <head>
+    <title>Calculadora de Horas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="horas.css">
+    <script src="bootstrap/js/knockout-3.4.0.js"></script>
+    <script src="bootstrap/js/jquery-3.4.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <body class="text-center">
+    <div class="container">
+      <h1 id="title">Calculadora de Horas</h1>
+      <div id="calculator">
+        <div id="display">
+          <div id="stack" data-bind="foreach: calculations">
+            <span data-bind="text: to_string()"></span>
+          </div>
+            <span data-bind="text: current().to_string()"></span>
+        </div>
+        <div id="buttons">
+          <div class="row">
+            <button data-bind="click: write_up.bind($data,'7')" type="button" class="button btn btn-secondary">7</button>
+            <button data-bind="click: write_up.bind($data,'8')" type="button" class="button btn btn-secondary">8</button>
+            <button data-bind="click: write_up.bind($data,'9')" type="button" class="button btn btn-secondary">9</button>
+            <button data-bind="click: clear_display" type="button" class="button btn btn-danger">AC</button>
+          </div>
+          <div class="row">
+            <button data-bind="click: write_up.bind($data,'4')" type="button" class="button btn btn-secondary">4</button>
+            <button data-bind="click: write_up.bind($data,'5')" type="button" class="button btn btn-secondary">5</button>
+            <button data-bind="click: write_up.bind($data,'6')" type="button" class="button btn btn-secondary">6</button>
+            <button data-bind="click: add_sub.bind($data, '-'), enable: is_valid()" type="button" class="button btn btn-danger">-</button>
+          </div>
+          <div class="row">
+            <button data-bind="click: write_up.bind($data,'1')" type="button" class="button btn btn-secondary">1</button>
+            <button data-bind="click: write_up.bind($data,'2')" type="button" class="button btn btn-secondary">2</button>
+            <button data-bind="click: write_up.bind($data,'3')" type="button" class="button btn btn-secondary">3</button>
+            <button data-bind="click: add_sub.bind($data, '+'), enable: is_valid()" type="button" class="button btn btn-danger">+</button>
+          </div>
+          <div class="row">
+            <button data-bind="click: write_up.bind($data,'0')" type="button" class="button-big btn btn-secondary">0</button>
+            <button data-bind="click: put_dot" type="button" class="button btn btn-info">:</button>
+            <button data-bind="click: get_result, enable: is_valid()" type="button" class="button btn btn-danger">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="horas.js"></script>
+  </body>
+</html>
